@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -52,14 +53,14 @@ public class Movement : MonoBehaviour
             lastGroundedTime = Time.time;
         }
 
-        if (Input.GetKeyDown(KeyCode.C) && (isGrounded || Time.time - lastGroundedTime <= coyoteTime))
+        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || Time.time - lastGroundedTime <= coyoteTime))
         {
             isGrounded = false;
             jumpTime = Time.time + 0.2f;
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
 
-        if (Input.GetKey(KeyCode.C) && !isGrounded && Time.time < jumpTime)
+        if (Input.GetKey(KeyCode.Space) && !isGrounded && Time.time < jumpTime)
         {
             rb.AddForce(new Vector2(0, jumpHoldForce), ForceMode2D.Impulse);
         }
@@ -79,7 +80,7 @@ public class Movement : MonoBehaviour
         else if (isClimbing && !Input.GetKey(KeyCode.Z))
         {
             isClimbing = false;
-            rb.gravityScale = 1;
+            rb.gravityScale = 5;
         }
     }
 
@@ -138,7 +139,7 @@ public class Movement : MonoBehaviour
         {
             isTouchingWall = false;
             isClimbing = false;
-            rb.gravityScale = 1;
+            rb.gravityScale = 5;
         }
     }
 }
